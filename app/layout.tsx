@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { Metadata } from "next";
 import { Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";

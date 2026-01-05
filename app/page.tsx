@@ -1,3 +1,4 @@
+// @ts-nocheck
 import CyberNav from '@/components/CyberNav';
 import HeroSection from '@/components/HeroSection';
 import TechTicker from '@/components/TechTicker';

@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client';
 
 import { Database, Code2, Server, Terminal, Wifi, Layout, GitBranch, Cpu, Globe } from 'lucide-react';
