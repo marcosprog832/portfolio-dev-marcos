@@ -42,6 +42,7 @@ export default function ContactTerminal() {
   className="mb-12 text-center"
 >
 
+
             <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-2">
               INICIAR <span className="text-[#00f2ff] text-glow-blue">TRANSMISSÃO</span>
             </h2>
