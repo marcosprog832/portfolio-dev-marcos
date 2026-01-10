@@ -33,11 +33,14 @@ export default function ContactTerminal() {
           
           {/* Cabeçalho do Terminal */}
           {/* @ts-ignore */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="mb-12 text-center"
-          >
+          <motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6, ease: "easeOut" }}
+  className="mb-12 text-center"
+>
+
             <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-2">
               INICIAR <span className="text-[#00f2ff] text-glow-blue">TRANSMISSÃO</span>
             </h2>
