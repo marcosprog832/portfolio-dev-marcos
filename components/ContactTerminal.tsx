@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+
 import { Send, Mail, Phone, Instagram, MapPin } from 'lucide-react';
 
 export default function ContactTerminal() {
@@ -32,7 +33,7 @@ export default function ContactTerminal() {
         <div className="max-w-4xl mx-auto">
           
           {/* Cabeçalho do Terminal */}
-          {/* @ts-ignore */}
+        
           <motion.div
   initial={{ opacity: 0, y: 20 }}
   whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +53,7 @@ export default function ContactTerminal() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             
             {/* Lado Esquerdo: Infos de Contato Reais */}
-            {/* @ts-ignore */}
+     
             <motion.div 
               initial={{ x: -50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
@@ -112,7 +113,7 @@ export default function ContactTerminal() {
             </motion.div>
 
             {/* Lado Direito: Formulário Terminal */}
-            {/* @ts-ignore */}
+      
             <motion.div 
               initial={{ x: 50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
