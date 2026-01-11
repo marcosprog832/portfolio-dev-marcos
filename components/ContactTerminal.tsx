@@ -1,8 +1,12 @@
 'use client';
 
+'use client';
+
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import motion from 'framer-motion/client';
 import { Send, Mail, Phone, Instagram, MapPin } from 'lucide-react';
+
+
 
 type FormState = {
   name: string;
