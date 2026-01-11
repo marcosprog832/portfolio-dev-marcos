@@ -3,7 +3,7 @@
 'use client';
 
 import { useState } from 'react';
-import motion from 'framer-motion/client';
+import { motion } from 'framer-motion'
 import { Send, Mail, Phone, Instagram, MapPin } from 'lucide-react';
 
 
