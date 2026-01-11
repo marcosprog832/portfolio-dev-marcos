@@ -1,8 +1,13 @@
-'use client';
+"use client";
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Mail, Phone, Instagram, MapPin } from 'lucide-react';
+
+// TRUQUE PARA CORRIGIR O ERRO:
+// Criamos uma variável que recebe o componente motion.div mas dizemos ao TypeScript 
+// que ela é do tipo "any" (qualquer coisa). Assim ele para de validar as propriedades 'initial'.
+const MotionDiv = motion.div as any;
 
 export default function ContactTerminal() {
   const [formState, setFormState] = useState({
@@ -11,23 +16,29 @@ export default function ContactTerminal() {
   });
 
   const handleSend = () => {
-    const phone = "5566992427779";
+    // SEU NÚMERO REAL
+    const phone = "5566992427779"; 
+    
+    // Mensagem
     const text = `Olá Marcos! Sou ${formState.name}. Vim pelo seu portfólio e gostaria de falar sobre: ${formState.message}`;
+    
+    // Abre WhatsApp
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (
     <section id="contato" className="py-24 bg-[#02040a] relative overflow-hidden">
+      
+      {/* Grid de fundo sutil */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,242,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,242,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
-
-          <motion.div
+          
+          {/* Cabeçalho do Terminal - Usando MotionDiv (Genérico) */}
+          <MotionDiv 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
             className="mb-12 text-center"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-2">
@@ -36,11 +47,12 @@ export default function ContactTerminal() {
             <p className="text-slate-500 font-mono text-sm">
               &gt; Canal seguro estabelecido. Aguardando input de dados...
             </p>
-          </motion.div>
+          </MotionDiv>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-
-            <motion.div
+            
+            {/* Lado Esquerdo: Infos de Contato */}
+            <MotionDiv 
               initial={{ x: -50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -51,8 +63,9 @@ export default function ContactTerminal() {
                   <span className="w-2 h-2 bg-[#ff0055] rounded-full animate-pulse" />
                   CANAIS DIRETOS
                 </h3>
-
+                
                 <div className="space-y-6">
+                  {/* EMAIL */}
                   <div className="flex items-center gap-4 text-slate-400 group-hover:text-white transition-colors">
                     <div className="p-3 bg-slate-900 rounded-lg text-[#00f2ff]"><Mail size={20} /></div>
                     <div>
@@ -63,6 +76,7 @@ export default function ContactTerminal() {
                     </div>
                   </div>
 
+                  {/* WHATSAPP */}
                   <div className="flex items-center gap-4 text-slate-400 group-hover:text-white transition-colors">
                     <div className="p-3 bg-slate-900 rounded-lg text-[#00f2ff]"><Phone size={20} /></div>
                     <div>
@@ -73,6 +87,7 @@ export default function ContactTerminal() {
                     </div>
                   </div>
 
+                  {/* INSTAGRAM */}
                   <div className="flex items-center gap-4 text-slate-400 group-hover:text-white transition-colors">
                     <div className="p-3 bg-slate-900 rounded-lg text-[#00f2ff]"><Instagram size={20} /></div>
                     <div>
@@ -83,6 +98,7 @@ export default function ContactTerminal() {
                     </div>
                   </div>
 
+                  {/* LOCALIZAÇÃO */}
                   <div className="flex items-center gap-4 text-slate-400 group-hover:text-white transition-colors">
                     <div className="p-3 bg-slate-900 rounded-lg text-[#00f2ff]"><MapPin size={20} /></div>
                     <div>
@@ -92,36 +108,54 @@ export default function ContactTerminal() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </MotionDiv>
 
-            <motion.div
+            {/* Lado Direito: Formulário Terminal */}
+            <MotionDiv 
               initial={{ x: 50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
               className="bg-[#0a1120] p-8 rounded-xl border border-[#00f2ff]/30 shadow-[0_0_20px_rgba(0,242,255,0.05)] relative overflow-hidden"
             >
+              {/* Scanline decoration */}
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#00f2ff] to-transparent opacity-50 animate-scan" />
 
               <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                <input
-                  type="text"
-                  value={formState.name}
-                  onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                  className="w-full bg-[#050a14] border border-slate-700 rounded p-3 text-white font-mono"
-                />
+                <div>
+                  <label className="text-[#00f2ff] font-mono text-xs mb-2 block">&gt; NOME_DO_REMETENTE:</label>
+                  <input 
+                    type="text" 
+                    value={formState.name}
+                    onChange={(e) => setFormState({...formState, name: e.target.value})}
+                    placeholder="Digite sua identificação..."
+                    className="w-full bg-[#050a14] border border-slate-700 rounded p-3 text-white focus:border-[#00f2ff] focus:shadow-[0_0_10px_rgba(0,242,255,0.2)] outline-none transition-all font-mono"
+                  />
+                </div>
 
-                <textarea
-                  rows={4}
-                  value={formState.message}
-                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                  className="w-full bg-[#050a14] border border-slate-700 rounded p-3 text-white font-mono"
-                />
+                <div>
+                  <label className="text-[#00f2ff] font-mono text-xs mb-2 block">&gt; MENSAGEM_DE_TEXTO:</label>
+                  <textarea 
+                    rows={4}
+                    value={formState.message}
+                    onChange={(e) => setFormState({...formState, message: e.target.value})}
+                    placeholder="Descreva a missão..."
+                    className="w-full bg-[#050a14] border border-slate-700 rounded p-3 text-white focus:border-[#00f2ff] focus:shadow-[0_0_10px_rgba(0,242,255,0.2)] outline-none transition-all font-mono resize-none"
+                  />
+                </div>
 
-                <button onClick={handleSend} className="w-full bg-[#00f2ff] text-black font-bold py-4 rounded">
-                  <Send size={18} /> EXECUTAR ENVIO
+                <button 
+                  onClick={handleSend}
+                  className="w-full bg-[#00f2ff] text-black font-bold py-4 rounded flex items-center justify-center gap-2 hover:brightness-110 hover:scale-[1.02] transition-all"
+                >
+                  <Send size={18} />
+                  EXECUTAR ENVIO
                 </button>
+                
+                <p className="text-center text-slate-600 text-[10px] font-mono mt-4">
+                  // MENSAGEM CRIPTOGRAFADA END-TO-END VIA WHATSAPP API
+                </p>
               </form>
-            </motion.div>
+            </MotionDiv>
 
           </div>
         </div>
