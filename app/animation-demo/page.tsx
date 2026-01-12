@@ -153,7 +153,7 @@ export default function NeuralSalesPage() {
 
               {/* BOTÃO DE CHECKOUT */}
               <a 
-                href="https://link-do-seu-checkout-kiwify.com.br" 
+                href="https://pay.kiwify.com.br/8Flvy3m" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group w-full py-4 bg-[#ff0055] hover:bg-[#d90045] text-white font-black rounded-lg text-lg tracking-wide shadow-[0_0_20px_rgba(255,0,85,0.4)] hover:shadow-[0_0_30px_rgba(255,0,85,0.6)] hover:scale-[1.02] transition-all flex items-center justify-center gap-3 mb-4"
